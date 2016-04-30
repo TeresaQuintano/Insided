@@ -1,0 +1,61 @@
+mixin printField(type, name, label, required, withError)
+  - required = required?required:false;
+  div(class=type==='checkbox' ? 'checkbox' : 'form-group', class=withError ? 'has-error' : '')
+    label(for=name)=label
+      - if(required)
+          span.input-required.corp
+            |  *
+    - if(type!=="textarea")
+      input.form-control(type=type, id=name, name=name, placeholder=label, required=required)
+
+      - if(withError)
+        span.help-block Este campo tiene error
+    - else
+      textarea.form-control(rows="4")
+
+mixin printPasswordField(name, label, required, withError, message)
+
+  div.form-group(class=withError ? 'has-error' : '')
+    label(for=name)=label
+      - if(required)
+          span.input-required.corp
+          |  *
+
+    input.form-control(type="password", id=name, name=name, placeholder=label, required=required)
+    - if(withError)
+      span.help-block Este campo tiene error
+
+    p !{message}
+
+mixin printSelectField(name, label, required, withError, options, onchange)
+  -var onchange = onchange||"" 
+  div.form-group
+    - var options = options || ["","1", "2", "3"]
+    - if(label)
+        label(for=name)=label
+          - if(required)
+            span.input-required.corp
+              |  *
+      select.form-control(id=name, name=name, required=required, onchange=onchange)
+      each val, index in options
+        option=val
+      
+
+mixin printRequired()
+  p 
+    span.corp 
+      b *
+      |  Campo Obligatorio
+
+mixin printCheckbox(name, required, label)
+  div.checkbox
+    label 
+      input(type="checkbox", name=name, required=required)
+      span=label
+
+mixin printRadio(name, required, label, checked)
+  div.radio
+    label 
+      input(type="radio", name=name, required=required, checked=checked)
+      span=label
+      

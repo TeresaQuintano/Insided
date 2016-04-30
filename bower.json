@@ -1,0 +1,22 @@
+{
+  "name": "1.0",
+  "authors": [
+    "Teresa Quintano <teresaquintano@gmail.com>"
+  ],
+  "description": "test Insided",
+  "main": "index.html",
+  "keywords": [
+    "test",
+    "Insided"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.teresaquintano.es",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
